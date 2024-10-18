@@ -18,8 +18,8 @@
 
 ### Screenshots:
 
-![Dashboard](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Dashboard.PNG)
+![Dashboard](https://github.com/Sd-space/JsonDB-project/blob/main/Assets/Screenshots/Dashboard.PNG)
 
-![Index Page](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Index.PNG)
+![Index Page](https://github.com/Sd-space/JsonDB-project/blob/main/Assets/Screenshots/Index.PNG)
 
-![Visualize](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Server.PNG)
+![Visualize](https://github.com/Sd-space/JsonDB-project/blob/main/Assets/Screenshots/Server.PNG)
