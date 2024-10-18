@@ -46,16 +46,15 @@
 $(document).ready(function () {
     $("#rollNo").focus();
 
-    // Function to check if Roll No exists in the database (simulate with a placeholder function)
+    
     function checkRollNo(rollNo) {
-        // Replace this function with actual API call to check if Roll No exists in the database
-        // Example response: true if exists, false if not
-        return (rollNo === "123"); // Simulate Roll No "123" exists
+       
+        return (rollNo === "123");
     }
 
-    // Function to get student data for existing Roll No (simulate with a placeholder function)
+   
     function getStudentData(rollNo) {
-        // Replace this function with actual API call to get data from the database
+        
         return {
             rollNo: rollNo,
             fullName: "John Doe",
@@ -66,18 +65,18 @@ $(document).ready(function () {
         };
     }
 
-    // Reset the form
+    
     $("#resetBtn").click(function () {
         resetForm();
     });
 
-    // On Roll No input
+    
     $("#rollNo").on("input", function () {
         var rollNo = $(this).val().trim();
         if (rollNo !== "") {
             var exists = checkRollNo(rollNo);
             if (exists) {
-                // Roll No exists, populate form and enable update/reset buttons
+                
                 var studentData = getStudentData(rollNo);
                 $("#fullName").val(studentData.fullName).prop("disabled", false);
                 $("#class").val(studentData.class).prop("disabled", false);
@@ -85,12 +84,12 @@ $(document).ready(function () {
                 $("#address").val(studentData.address).prop("disabled", false);
                 $("#enrollmentDate").val(studentData.enrollmentDate).prop("disabled", false);
                 
-                // Disable Save button and enable Update and Reset buttons
+                
                 $("#saveBtn").prop("disabled", true);
                 $("#updateBtn").prop("disabled", false);
                 $("#rollNo").prop("disabled", true);
             } else {
-                // Roll No doesn't exist, enable data input and save/reset buttons
+                
                 $("#fullName, #class, #birthDate, #address, #enrollmentDate").prop("disabled", false);
                 $("#saveBtn").prop("disabled", false);
                 $("#updateBtn").prop("disabled", true);
@@ -99,25 +98,25 @@ $(document).ready(function () {
         }
     });
 
-    // Save button action (for new entries)
+    
     $("#saveBtn").click(function () {
         var jsonStr = validateAndGetFormData();
         if (jsonStr !== "") {
-            var putReqStr = createPUTRequest("YOUR_TOKEN_HERE", jsonStr, "SCHOOL-DB", "STUDENT-TABLE");
+            var putReqStr = createPUTRequest("90934494|-31949223097211978|90962786", jsonStr, "SCHOOL-DB", "STUDENT-TABLE");
             executeCommand(putReqStr, "http://api.login2explore.com:5577", "/api/iml");
         }
     });
 
-    // Update button action (for existing entries)
+    
     $("#updateBtn").click(function () {
         var jsonStr = validateAndGetFormData();
         if (jsonStr !== "") {
-            var putReqStr = createPUTRequest("YOUR_TOKEN_HERE", jsonStr, "SCHOOL-DB", "STUDENT-TABLE");
+            var putReqStr = createPUTRequest("90934494|-31949223097211978|90962786", jsonStr, "SCHOOL-DB", "STUDENT-TABLE");
             executeCommand(putReqStr, "http://api.login2explore.com:5577", "/api/iml");
         }
     });
 
-    // Validate form data and return JSON string
+    
     function validateAndGetFormData() {
         var rollNoVar = $("#rollNo").val().trim();
         if (rollNoVar === "") {
@@ -166,7 +165,7 @@ $(document).ready(function () {
         return JSON.stringify(jsonStrObj);
     }
 
-    // Function to create PUT request
+    
     function createPUTRequest(connToken, jsonObj, dbName, relName) {
         var putRequest = "{\n"
             + "\"token\" : \"" + connToken + "\",\n"
@@ -178,18 +177,18 @@ $(document).ready(function () {
         return putRequest;
     }
 
-    // Function to execute PUT request
+    
     function executeCommand(reqString, dbBaseUrl, apiEndPointUrl) {
         var url = dbBaseUrl + apiEndPointUrl;
         $.post(url, reqString, function (result) {
             alert("Operation Successful: " + JSON.stringify(result));
-            resetForm(); // Reset form after operation
+            resetForm();
         }).fail(function (result) {
             alert("Operation Failed: " + result.responseText);
         });
     }
 
-    // Reset form function
+   
     function resetForm() {
         $("#studentForm")[0].reset();
         $("#rollNo").prop("disabled", false);
